@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:id="@+id/foodNameText"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity="center" />
+
+    <TextView
+        android:id="@+id/num_text"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="40dp"
+        android:gravity="center" />
+
+    <ImageView
+        android:id="@+id/qrImage"
+        android:layout_width="240dp"
+        android:layout_height="240dp"
+        android:layout_centerInParent="true" />
+
+
+    <Button
+        android:id="@+id/confirm_button"
+        android:layout_width="170dp"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="40dp"
+        android:text="已核销" />
+
+
+</RelativeLayout>
