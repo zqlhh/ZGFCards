@@ -53,6 +53,7 @@ public class CardInfoManagerAgent implements CardManager {
     @Override
     public void deleteCardInfo(CardInfo cardInfo) {
 
+        SPUtil.deleteCardInfo(context,cardInfo);
     }
 
 

@@ -22,17 +22,30 @@
         android:id="@+id/qrImage"
         android:layout_width="240dp"
         android:layout_height="240dp"
-        android:layout_centerInParent="true" />
+        android:layout_marginTop="200dp"
+        android:layout_centerHorizontal="true"/>
 
 
     <Button
         android:id="@+id/confirm_button"
         android:layout_width="170dp"
         android:layout_height="50dp"
+        android:layout_below="@+id/qrImage"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
+        android:text="已使用"
+
+        />
+
+
+    <Button
+        android:id="@+id/delete_button"
+        android:layout_width="170dp"
+        android:layout_height="50dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="40dp"
-        android:text="已核销" />
-
+        android:textColor="#FF0000"
+        android:text="删除"
+        />
 
 </RelativeLayout>

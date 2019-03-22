@@ -42,6 +42,8 @@ public class ShowCardFragment extends BaseFragment {
 
     private Button confirmButton;
 
+    private Button deleteButton;
+
     private boolean inMainFragment;
 
     @Nullable
@@ -65,6 +67,16 @@ public class ShowCardFragment extends BaseFragment {
             @Override
             public void onClick(View v) {
                 CardInfoManagerAgent.getCardInfoManagetAgent(getContext()).changeCardInfo(cardInfo);
+                listener.showCradList();
+            }
+        });
+
+        deleteButton = (Button) contentView.findViewById(R.id.delete_button);
+
+        deleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CardInfoManagerAgent.getCardInfoManagetAgent(getContext()).deleteCardInfo(cardInfo);
                 listener.showCradList();
             }
         });
