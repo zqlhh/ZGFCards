@@ -74,8 +74,17 @@ public class AddCardFragment extends BaseFragment {
 
         CardInfoManagerAgent.getCardInfoManagetAgent(getContext()).addCard(cardInfo);
 
+        reSetEdit();
+
         listener.showCradList();
 
+    }
+
+    private void reSetEdit(){
+
+        numEdit.setText("");
+        foodNameEdit.setText("");
+        leftNumEdit.setText("");
 
     }
 

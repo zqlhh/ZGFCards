@@ -1,5 +1,7 @@
 package com.westbrook.zgfcards.fragment;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
@@ -14,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.EncodeHintType;
@@ -53,13 +56,13 @@ public class ShowCardFragment extends BaseFragment {
 
         foodName = (TextView) contentView.findViewById(R.id.foodNameText);
 
-        foodName.setText(cardInfo.foodName+" "+cardInfo.leftNum+"次");
+        foodName.setText(cardInfo.foodName + " " + cardInfo.leftNum + "次");
 
         numText = (TextView) contentView.findViewById(R.id.num_text);
 
-        numText.setText(cardInfo.cardId+"");
+        numText.setText(cardInfo.cardId + "");
 
-        qrImage =(ImageView) contentView.findViewById(R.id.qrImage);
+        qrImage = (ImageView) contentView.findViewById(R.id.qrImage);
 
         confirmButton = (Button) contentView.findViewById(R.id.confirm_button);
 
@@ -76,8 +79,29 @@ public class ShowCardFragment extends BaseFragment {
         deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CardInfoManagerAgent.getCardInfoManagetAgent(getContext()).deleteCardInfo(cardInfo);
-                listener.showCradList();
+                AlertDialog.Builder normalDialog = new AlertDialog.Builder(getContext());
+                normalDialog.setTitle("确认删除");
+                normalDialog.setIcon(R.mipmap.ic_launcher_round);
+                normalDialog.setPositiveButton("删除"
+                        , new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                CardInfoManagerAgent.getCardInfoManagetAgent(getContext()).deleteCardInfo(cardInfo);
+                                listener.showCradList();
+                            }
+                        });
+
+                normalDialog.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+
+                //创建并显示
+                normalDialog.create().show();
+
+
             }
         });
 
@@ -97,9 +121,9 @@ public class ShowCardFragment extends BaseFragment {
 
     }
 
-    private void showQrCode(){
+    private void showQrCode() {
         try {
-            Drawable drawable = new BitmapDrawable(createQcore(cardInfo.cardId+"",960));
+            Drawable drawable = new BitmapDrawable(createQcore(cardInfo.cardId + "", 960));
             qrImage.setBackgroundDrawable(drawable);
 
         } catch (WriterException e) {
